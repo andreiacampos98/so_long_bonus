@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 18:23:22 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/13 20:23:17 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:55:53 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ int	main(int argc, char **argv)
 		return (0);
 	init_images(&game);
 	init_walls(&game);
+	init_enemy(&game);
 	render(&game);
 	loop_images(game);
+	destroy_images_enemy(&game);
 	destroy_images_walls(&game);
 	destroy_images(&game);
 	if (game.map.map)

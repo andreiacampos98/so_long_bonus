@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 20:34:03 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/13 23:32:41 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:50:06 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,25 @@ void	movement(t_game *game, char move)
 		game->map.np = (t_point){game->map.pp.x, game->map.pp.y + 1};
 	else if (move == 'w')
 		game->map.np = (t_point){game->map.pp.x, game->map.pp.y - 1};
+}
+
+void	effect_player(t_game *game, int i, int j)
+{
+	mlx_put_image_to_window(game->mlx, game->window, game->img.player1,
+			j * IMG_SIZE, i * IMG_SIZE);
+	usleep(4000);
+	mlx_put_image_to_window(game->mlx, game->window, game->img.player2,
+			j * IMG_SIZE, i * IMG_SIZE);
+	usleep(4000);
+	mlx_put_image_to_window(game->mlx, game->window, game->img.player3,
+			j * IMG_SIZE, i * IMG_SIZE);
+	usleep(4000);
+	mlx_put_image_to_window(game->mlx, game->window, game->img.player4,
+			j * IMG_SIZE, i * IMG_SIZE);
+	usleep(4000);
+	mlx_put_image_to_window(game->mlx, game->window, game->img.player5,
+			j * IMG_SIZE, i * IMG_SIZE);
+	usleep(4000);
 }
 
 void	move_player(t_game *game, char move)

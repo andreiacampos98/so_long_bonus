@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:18:17 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/01/28 20:33:28 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:45:04 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	valid_char(t_mapdata mapdata)
 		{
 			if (mapdata.map[i][j] != 'C' && mapdata.map[i][j] != 'P' &&
 				mapdata.map[i][j] != 'E' && mapdata.map[i][j] != '1' &&
-				mapdata.map[i][j] != '0')
+				mapdata.map[i][j] != '0' && mapdata.map[i][j] != 'M')
 			{
 				matrix_delete(mapdata.map);
 				handle_errors("There is an invalid character.");

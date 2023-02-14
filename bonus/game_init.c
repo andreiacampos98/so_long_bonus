@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:52:20 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/13 22:56:24 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:49:02 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,15 @@ void	init_images(t_game *game)
 {
 	game->img.size.x = IMG_SIZE;
 	game->img.size.y = IMG_SIZE;
-	game->img.player = mlx_xpm_file_to_image(game->mlx, "imgs/14.xpm",
+	game->img.player1 = mlx_xpm_file_to_image(game->mlx, "imgs/14.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.player2 = mlx_xpm_file_to_image(game->mlx, "imgs/15.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.player3 = mlx_xpm_file_to_image(game->mlx, "imgs/16.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.player4 = mlx_xpm_file_to_image(game->mlx, "imgs/17.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.player5 = mlx_xpm_file_to_image(game->mlx, "imgs/18.xpm",
 			&(game->img.size.x), &(game->img.size.y));
 	game->img.exit = mlx_xpm_file_to_image(game->mlx, "imgs/19.xpm",
 			&(game->img.size.x), &(game->img.size.y));
@@ -78,5 +86,25 @@ void	init_walls(t_game *game)
 	game->img.wall_LB = mlx_xpm_file_to_image(game->mlx, "imgs/5.xpm",
 			&(game->img.size.x), &(game->img.size.y));
 	game->img.wall = mlx_xpm_file_to_image(game->mlx, "imgs/8.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+}
+
+void	init_enemy(t_game *game)
+{
+	game->img.enemy1 = mlx_xpm_file_to_image(game->mlx, "imgs/31.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy2 = mlx_xpm_file_to_image(game->mlx, "imgs/32.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy3 = mlx_xpm_file_to_image(game->mlx, "imgs/33.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy4= mlx_xpm_file_to_image(game->mlx, "imgs/34.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy5 = mlx_xpm_file_to_image(game->mlx, "imgs/35.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy6 = mlx_xpm_file_to_image(game->mlx, "imgs/36.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy7 = mlx_xpm_file_to_image(game->mlx, "imgs/37.xpm",
+			&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy8 = mlx_xpm_file_to_image(game->mlx, "imgs/38.xpm",
 			&(game->img.size.x), &(game->img.size.y));
 }

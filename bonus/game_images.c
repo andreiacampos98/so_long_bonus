@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:58:58 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/13 22:19:25 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:55:19 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	parse_chars(t_game *game, int i, int j)
 		mlx_put_image_to_window(game->mlx, game->window, game->img.ground,
 			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == PLAYER)
-		mlx_put_image_to_window(game->mlx, game->window, game->img.player,
+		effect_player(game, i, j);
+	else if (game->map.map[i][j] == ENEMY)
+		mlx_put_image_to_window(game->mlx, game->window, game->img.enemy1,
 			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == EXIT)
 		mlx_put_image_to_window(game->mlx, game->window, game->img.exit,
@@ -122,7 +124,11 @@ void	loop_images(t_game game)
 void	destroy_images(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img.ground);
-	mlx_destroy_image(game->mlx, game->img.player);
+	mlx_destroy_image(game->mlx, game->img.player1);
+	mlx_destroy_image(game->mlx, game->img.player2);
+	mlx_destroy_image(game->mlx, game->img.player3);
+	mlx_destroy_image(game->mlx, game->img.player4);
+	mlx_destroy_image(game->mlx, game->img.player5);
 	mlx_destroy_image(game->mlx, game->img.exit);
 	mlx_destroy_image(game->mlx, game->img.coin);
 	mlx_destroy_display(game->mlx);
@@ -139,4 +145,16 @@ void	destroy_images_walls(t_game *game)
 	mlx_destroy_image(game->mlx, game->img.wall_LC);
 	mlx_destroy_image(game->mlx, game->img.wall_LD);
 	mlx_destroy_image(game->mlx, game->img.wall_LE);
+}
+
+void	destroy_images_enemy(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->img.enemy1);
+	mlx_destroy_image(game->mlx, game->img.enemy2);
+	mlx_destroy_image(game->mlx, game->img.enemy3);
+	mlx_destroy_image(game->mlx, game->img.enemy4);
+	mlx_destroy_image(game->mlx, game->img.enemy5);
+	mlx_destroy_image(game->mlx, game->img.enemy6);
+	mlx_destroy_image(game->mlx, game->img.enemy7);
+	mlx_destroy_image(game->mlx, game->img.enemy8);
 }
