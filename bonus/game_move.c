@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 20:34:03 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/14 18:50:06 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:53:52 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ int	win_game(t_game *game)
 		return (0);
 }
 
+void	lose_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->window);
+	game->window = NULL;
+}
+
 /*This function it will be call everytime that the user click on ASDW.
 If the next position is a wall or the next position is an exit and 
 there is collectible, the function return 0.*/
@@ -80,25 +86,6 @@ void	movement(t_game *game, char move)
 		game->map.np = (t_point){game->map.pp.x, game->map.pp.y - 1};
 }
 
-void	effect_player(t_game *game, int i, int j)
-{
-	mlx_put_image_to_window(game->mlx, game->window, game->img.player1,
-			j * IMG_SIZE, i * IMG_SIZE);
-	usleep(4000);
-	mlx_put_image_to_window(game->mlx, game->window, game->img.player2,
-			j * IMG_SIZE, i * IMG_SIZE);
-	usleep(4000);
-	mlx_put_image_to_window(game->mlx, game->window, game->img.player3,
-			j * IMG_SIZE, i * IMG_SIZE);
-	usleep(4000);
-	mlx_put_image_to_window(game->mlx, game->window, game->img.player4,
-			j * IMG_SIZE, i * IMG_SIZE);
-	usleep(4000);
-	mlx_put_image_to_window(game->mlx, game->window, game->img.player5,
-			j * IMG_SIZE, i * IMG_SIZE);
-	usleep(4000);
-}
-
 void	move_player(t_game *game, char move)
 {
 	static t_components	previous = EMPTY;
@@ -111,11 +98,12 @@ void	move_player(t_game *game, char move)
 	if (game->collect == game->map.collect)
 	{
 		game->map.can_exit = 1;
-		game->img.exit = mlx_xpm_file_to_image(game->mlx, "imgs/20.xpm",
-			&(game->img.size.x), &(game->img.size.y));
+		game->img.count_exit = 1;
 	}
 	count_collectables_catches(game, move);
 	movement(game, move);
+	if (check_next_positions(game, move, ENEMY) == 1)
+		lose_game(game);
 	if (check_next_positions(game, move, COLLECTABLE) == 0)
 		previous = game->map.map[game->map.np.y][game->map.np.x];
 	else

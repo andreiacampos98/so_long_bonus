@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:58:58 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/14 21:55:19 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:54:35 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ void	parse_chars(t_game *game, int i, int j)
 		mlx_put_image_to_window(game->mlx, game->window, game->img.ground,
 			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == PLAYER)
-		effect_player(game, i, j);
+		mlx_put_image_to_window(game->mlx, game->window, game->img.player[game->img.count_player++ % game->img.size_player],
+			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == ENEMY)
-		mlx_put_image_to_window(game->mlx, game->window, game->img.enemy1,
+		mlx_put_image_to_window(game->mlx, game->window, game->img.enemy[game->img.count_enemy++ % game->img.size_enemy],
 			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == EXIT)
-		mlx_put_image_to_window(game->mlx, game->window, game->img.exit,
+		mlx_put_image_to_window(game->mlx, game->window, game->img.exit[game->img.count_exit],
 			j * IMG_SIZE, i * IMG_SIZE);
 	else if (game->map.map[i][j] == COLLECTABLE)
 		mlx_put_image_to_window(game->mlx, game->window, game->img.coin,
@@ -124,14 +125,17 @@ void	loop_images(t_game game)
 void	destroy_images(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img.ground);
-	mlx_destroy_image(game->mlx, game->img.player1);
-	mlx_destroy_image(game->mlx, game->img.player2);
-	mlx_destroy_image(game->mlx, game->img.player3);
-	mlx_destroy_image(game->mlx, game->img.player4);
-	mlx_destroy_image(game->mlx, game->img.player5);
-	mlx_destroy_image(game->mlx, game->img.exit);
+	mlx_destroy_image(game->mlx, game->img.player[0]);
+	mlx_destroy_image(game->mlx, game->img.player[1]);
+	mlx_destroy_image(game->mlx, game->img.player[2]);
+	mlx_destroy_image(game->mlx, game->img.player[3]);
+	mlx_destroy_image(game->mlx, game->img.player[4]);
+	mlx_destroy_image(game->mlx, game->img.exit[0]);
+	mlx_destroy_image(game->mlx, game->img.exit[1]);
 	mlx_destroy_image(game->mlx, game->img.coin);
 	mlx_destroy_display(game->mlx);
+	free(game->img.exit);
+	free(game->img.player);
 	free(game->mlx);
 }
 
@@ -145,16 +149,18 @@ void	destroy_images_walls(t_game *game)
 	mlx_destroy_image(game->mlx, game->img.wall_LC);
 	mlx_destroy_image(game->mlx, game->img.wall_LD);
 	mlx_destroy_image(game->mlx, game->img.wall_LE);
+	mlx_destroy_image(game->mlx, game->img.wall);
 }
 
 void	destroy_images_enemy(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img.enemy1);
-	mlx_destroy_image(game->mlx, game->img.enemy2);
-	mlx_destroy_image(game->mlx, game->img.enemy3);
-	mlx_destroy_image(game->mlx, game->img.enemy4);
-	mlx_destroy_image(game->mlx, game->img.enemy5);
-	mlx_destroy_image(game->mlx, game->img.enemy6);
-	mlx_destroy_image(game->mlx, game->img.enemy7);
-	mlx_destroy_image(game->mlx, game->img.enemy8);
+	mlx_destroy_image(game->mlx, game->img.enemy[0]);
+	mlx_destroy_image(game->mlx, game->img.enemy[1]);
+	mlx_destroy_image(game->mlx, game->img.enemy[2]);
+	mlx_destroy_image(game->mlx, game->img.enemy[3]);
+	mlx_destroy_image(game->mlx, game->img.enemy[4]);
+	mlx_destroy_image(game->mlx, game->img.enemy[5]);
+	mlx_destroy_image(game->mlx, game->img.enemy[6]);
+	mlx_destroy_image(game->mlx, game->img.enemy[7]);
+	free(game->img.enemy);
 }

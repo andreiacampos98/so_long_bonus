@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:37:41 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/14 21:56:08 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:52:11 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,8 @@ typedef struct s_mapdata
 
 typedef struct s_img
 {
-	void			*player1;
-	void			*player2;
-	void			*player3;
-	void			*player4;
-	void			*player5;
-	void			*exit;
+	void			**player;
+	void			**exit;
 	void			*ground;
 	void			*coin;
 	void			*wall;
@@ -63,14 +59,12 @@ typedef struct s_img
 	void			*wall_0_y;
 	void			*wall_x_0;
 	void			*wall_x_y;
-	void			*enemy1;
-	void			*enemy2;
-	void			*enemy3;
-	void			*enemy4;
-	void			*enemy5;
-	void			*enemy6;
-	void			*enemy7;
-	void			*enemy8;
+	void			**enemy;
+	int 			size_enemy;
+	int				size_player;
+	int				count_enemy;
+	int				count_exit;
+	int				count_player;
 	t_point			size;
 }	t_img;
 
@@ -125,6 +119,7 @@ int			init_window(t_game *game);
 void		init_images(t_game *game);
 void		init_walls(t_game *game);
 void		init_enemy(t_game *game);
+void		init_images_player(t_game *game);
 
 /*------------------- Game Images -------------------*/
 void		parse_chars(t_game *game, int i, int j);
@@ -146,6 +141,7 @@ void		count_collectables_catches(t_game *game, char move);
 int			win_game(t_game *game);
 void		move_player(t_game *game, char move);
 void		effect_player(t_game *game, int i, int j);
+void		lose_game(t_game *game);
 
 /*-------------------- Utils --------------------*/
 void		matrix_delete(char **str);
