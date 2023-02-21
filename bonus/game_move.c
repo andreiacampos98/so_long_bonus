@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 20:34:03 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/20 22:53:52 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:59:11 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,33 +84,4 @@ void	movement(t_game *game, char move)
 		game->map.np = (t_point){game->map.pp.x, game->map.pp.y + 1};
 	else if (move == 'w')
 		game->map.np = (t_point){game->map.pp.x, game->map.pp.y - 1};
-}
-
-void	move_player(t_game *game, char move)
-{
-	static t_components	previous = EMPTY;
-
-	if (check_next_positions(game, move, WALL) == 1)
-		return ;
-	game->map.map[game->map.pp.y][game->map.pp.x] = previous;
-	game->moves++;
-	ft_printf("Moves: %d\n", game->moves);
-	if (game->collect == game->map.collect)
-	{
-		game->map.can_exit = 1;
-		game->img.count_exit = 1;
-	}
-	count_collectables_catches(game, move);
-	movement(game, move);
-	if (check_next_positions(game, move, ENEMY) == 1)
-		lose_game(game);
-	if (check_next_positions(game, move, COLLECTABLE) == 0)
-		previous = game->map.map[game->map.np.y][game->map.np.x];
-	else
-		previous = EMPTY;
-	if (game->map.can_exit == 1
-		&& game->map.map[game->map.np.y][game->map.np.x] == EXIT)
-		win_game(game);
-	game->map.map[game->map.np.y][game->map.np.x] = PLAYER;
-	game->map.pp = game->map.np;
 }

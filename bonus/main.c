@@ -6,60 +6,11 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 18:23:22 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/20 22:39:46 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:42:03 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-
-/*In this function, I will check all the requirements.*/
-int	valid_map(char *file, t_mapdata mapdata)
-{
-	if (!valid_components(mapdata))
-		return (0);
-	if (!map_surrounded_by_walls(mapdata))
-	{
-		matrix_delete((mapdata).map);
-		handle_errors("The map isn't surrounded by walls.");
-		return (0);
-	}
-	if (!line_length_equal(mapdata, file))
-	{
-		matrix_delete((mapdata).map);
-		handle_errors("The map isn't rectangular.");
-		return (0);
-	}
-	if (!has_valid_path(&mapdata))
-	{
-		matrix_delete((mapdata).map);
-		handle_errors("Invalid path!");
-		return (0);
-	}
-	return (1);
-}
-
-void	init_player(t_mapdata *mapdata)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (mapdata->map[i])
-	{
-		while (mapdata->map[i][j])
-		{
-			if (mapdata->map[i][j] == PLAYER)
-			{
-				mapdata->pp.x = j;
-				mapdata->pp.y = i;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
 
 /*In the main, I will call the funtion I will call the funtion valid map 
 in order to check if the map is valid. 

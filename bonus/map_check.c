@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:18:17 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/14 21:45:04 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:41:21 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ int	valid_char(t_mapdata mapdata)
 		{
 			if (mapdata.map[i][j] != 'C' && mapdata.map[i][j] != 'P' &&
 				mapdata.map[i][j] != 'E' && mapdata.map[i][j] != '1' &&
-				mapdata.map[i][j] != '0' && mapdata.map[i][j] != 'M')
+				mapdata.map[i][j] != '0' && mapdata.map[i][j] != 'M' &&
+				mapdata.map[i][j] != 'F')
 			{
 				matrix_delete(mapdata.map);
 				handle_errors("There is an invalid character.");
@@ -119,13 +120,8 @@ int	valid_char(t_mapdata mapdata)
 	return (1);
 }
 
-/*In this function, I will check if there is only one player and exit. 
-Furthermore, if there is ate least one collectible.*/
-
-int	valid_components(t_mapdata mapdata)
+int	valid_nb(t_mapdata mapdata)
 {
-	if (!valid_char(mapdata))
-		return (0);
 	if (mapdata.player != 1)
 	{
 		matrix_delete(mapdata.map);

@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:37:41 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/07 18:42:10 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:51:10 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int			valid_char(t_mapdata mapdata);
 int			valid_components(t_mapdata mapdata);
 
 int			map_surrounded_by_walls(t_mapdata mapdata);
-bool		lood_fill(t_mapdata *map, t_point curr, char **maze);
+bool		flood_fill(t_mapdata *map, t_point curr, char **maze);
 bool		has_valid_path(t_mapdata *mapdata);
 int			line_length_equal(t_mapdata mapdata, char *file);
 int			valid_file(int argc, char *file);
