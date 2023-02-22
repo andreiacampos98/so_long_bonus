@@ -6,13 +6,13 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 14:47:32 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/21 18:32:32 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:59:04 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-int	nb_flower(char **map, char *file)
+int	nb_follower(char **map, char *file)
 {
 	int	i;
 	int	j;

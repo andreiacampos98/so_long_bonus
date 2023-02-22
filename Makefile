@@ -6,7 +6,7 @@
 #    By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 18:23:18 by anaraujo          #+#    #+#              #
-#    Updated: 2023/02/21 18:43:03 by anaraujo         ###   ########.fr        #
+#    Updated: 2023/02/22 17:41:29 by anaraujo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS_BONUS := bonus/main.c				bonus/game_render.c		\
 				bonus/game_init.c		bonus/game_handler.c	\
 				bonus/game_move.c		bonus/game_images.c		\
 				bonus/game_move_2.c		bonus/game_follower.c	\
-				bonus/map_check_3.c
+				bonus/map_check_3.c		bonus/game_render_2.c
 
 
 OBJS := $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:29:36 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/21 11:46:54 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:48:30 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	handle_keypress(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 		ft_exit(game);
-	else if (keysym == 'a' || keysym == 's' || keysym == 'w'
+	if (keysym == 'a' || keysym == 's' || keysym == 'w'
 		|| keysym == 'd')
 	{
 		move_player(game, keysym);
-		move_follower(game, keysym);
 	}
+	if (game->map.follower && (keysym == 'a' || keysym == 's'
+			|| keysym == 'w' || keysym == 'd'))
+		move_follower(game, keysym);
 	return (0);
 }
 

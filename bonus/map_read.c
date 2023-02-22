@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:18:15 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/21 15:22:21 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:58:53 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ t_mapdata	map(char *file)
 	mapdata.player = nb_player(mapdata.map, file);
 	mapdata.collect = nb_collectible(mapdata.map, file);
 	mapdata.can_exit = 0;
-	mapdata.follower = nb_flower(mapdata.map, file);
+	mapdata.follower = nb_follower(mapdata.map, file);
 	mapdata.pp.x = 0;
 	mapdata.pp.y = 0;
 	mapdata.fp.x = 0;

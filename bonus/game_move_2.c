@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 09:40:26 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/21 18:55:35 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:44:31 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,7 @@ void	move_follower(t_game *game, char move)
 		lose_game(game);
 	game->map.map[game->map.fp.y][game->map.fp.x] = previous;
 	movement_follower(game, move);
-	if (check_next_positions(game, move, COLLECTABLE) == 0)
-		previous = game->map.map[game->map.nf.y][game->map.nf.x];
-	else
-		previous = EMPTY;
+	previous = game->map.map[game->map.nf.y][game->map.nf.x];
 	game->map.map[game->map.nf.y][game->map.nf.x] = FOLLOWER;
 	game->map.fp = game->map.nf;
 }

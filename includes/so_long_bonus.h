@@ -6,7 +6,7 @@
 /*   By: anaraujo <anaraujo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:37:41 by anaraujo          #+#    #+#             */
-/*   Updated: 2023/02/21 19:30:35 by anaraujo         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:59:38 by anaraujo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void		init_player(t_mapdata *mapdata);
 
 /*--------------Game Follower-----------------*/
 void		init_follower(t_mapdata *mapdata);
-int			nb_flower(char **map, char *file);
+int			nb_follower(char **map, char *file);
 
 /*-------------------- Game Init --------------------*/
 t_game		game_init(t_mapdata *map);
